@@ -1,11 +1,9 @@
 ﻿using ASPAssignment1.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace ASPAssignment1.Controllers
 {
@@ -18,9 +16,19 @@ namespace ASPAssignment1.Controllers
             _logger = logger;
         }
 
+        private ProductContext context { get; set; }
+
+        public HomeController(ProductContext ptx)
+        {
+            context = ptx;
+        }
+
         public IActionResult Index()
         {
-            return View();
+            var products = context.Products
+                .Include(p => p.Category)
+                .OrderBy(p => p.Name.ToList());
+            return View(products);
         }
 
         public IActionResult Privacy()

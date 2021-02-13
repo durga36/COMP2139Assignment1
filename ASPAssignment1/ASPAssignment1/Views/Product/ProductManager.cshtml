@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Product>
+@{
+    ViewBag.Title = "Product Manager";
+}
+
+// nav bar
+<div>
+    <h1 class="display-4">SportsPro Technical Support</h1>
+    <p>Sports management software for the sports enthusiast</p>
+    <div>
+        <h2>Admin</h2>
+        <button style="padding:15px; width:50%; text-align:left;">Manage Products</button><br />
+        <button style="padding:15px; width:50%; text-align:left;">Manage Technicians</button><br />
+        <button style="padding:15px; width:50%; text-align:left;">Manage Customers</button><br />
+        <button style="padding:15px; width:50%; text-align:left;">Manage Incidents</button><br />
+        <button style="padding:15px; width:50%; text-align:left;">Manage Registrations</button>
+    </div>
+    <div>
+        <h2>Technicians</h2>
+        <button style="padding:15px; width:50%; text-align:left;">Update Incident</button>
+    </div>
+</div>
+
+// For the Product Manager Page
+<body>
+    <h1>Product Manager</h1>
+    <table>
+        <thread>
+            <tr>Code</tr>
+            <tr>Name</tr>
+            <tr>Price</tr>
+            <tr>Release Date</tr>
+            <tr></tr>
+            <tr></tr>
+        </thread>
+        <tbody>
+            @foreach (Product product in Model)
+            {
+                <tr>
+                    <td>
+                        <a asp-action="Details" asp-controller="Product" asp-route-id="@product.ProductId" asp-route-slug="@product.Slug">@product.Code</a>
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-controller="Product" asp-route-id="@product.ProductId" asp-route-slug="@product.Slug">@product.Name</a>
+                    </td>
+                    <td>@product.Price</td>
+                    <td>@product.ReleaseDate</td>
+                    <td><asp:button runat="server" id="btnEdit" Text="Edit" OnClick="btnEdit_Click" /></td>
+                    <td><asp:button runat="server" id="btnDelete" Text="Delete" OnClick="btnDelete_Click" /></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <asp:Button runat="server" id="btnAdd" Text="Add Product" OnClick="btnAdd_Click" />
+</body>
