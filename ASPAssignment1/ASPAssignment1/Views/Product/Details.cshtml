@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Product>
+@{
+    ViewBag.Title = "Edit Product";
+}
+
+<body>
+    <h1>Product Details</h1>
+    <table>
+        <tbody>
+                <tr>
+                    <td>
+                        <a asp-action="Details" asp-controller="Product" asp-route-id="ProductId" asp-route-slug="Slug">Code</a>
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-controller="Product" asp-route-id="ProductId" asp-route-slug="Slug">Name</a>
+                    </td>
+                    <td>Price</td>
+                    <td>ReleaseDate</td>
+                </tr>
+        </tbody>
+    </table>
+</body>

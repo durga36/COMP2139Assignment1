@@ -77,3 +77,8 @@ C:\Users\16478\source\repos\COMP2139Assignment1\ASPAssignment1\ASPAssignment1\bi
 C:\Users\16478\source\repos\COMP2139Assignment1\ASPAssignment1\ASPAssignment1\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
 C:\Users\16478\source\repos\COMP2139Assignment1\ASPAssignment1\ASPAssignment1\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\16478\source\repos\COMP2139Assignment1\ASPAssignment1\ASPAssignment1\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\16478\source\repos\COMP2139Assignment1\ASPAssignment1\ASPAssignment1\obj\Debug\netcoreapp3.1\Razor\Views\Product\Add.cshtml.g.cs
+C:\Users\16478\source\repos\COMP2139Assignment1\ASPAssignment1\ASPAssignment1\obj\Debug\netcoreapp3.1\Razor\Views\Product\Details.cshtml.g.cs
+C:\Users\16478\source\repos\COMP2139Assignment1\ASPAssignment1\ASPAssignment1\obj\Debug\netcoreapp3.1\Razor\Views\Product\Edit.cshtml.g.cs
+C:\Users\16478\source\repos\COMP2139Assignment1\ASPAssignment1\ASPAssignment1\obj\Debug\netcoreapp3.1\Razor\Views\Product\ProductManager.cshtml.g.cs
+C:\Users\16478\source\repos\COMP2139Assignment1\ASPAssignment1\ASPAssignment1\obj\Debug\netcoreapp3.1\Razor\Views\Product\Delete.cshtml.g.cs
