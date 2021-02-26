@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Technician>
+@{
+    ViewBag.Title = "Technician Manager";
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+// For the Technician Manager Page
+<body>
+    <h1>Technician Manager</h1>
+    <table>
+        <thread>
+            <tr>Name</tr>
+            <tr>Email</tr>
+            <tr>Phone</tr>
+            <tr></tr>
+            <tr></tr>
+        </thread>
+        <tbody>
+            @foreach (Technician technician in Model)
+            {
+                <tr>
+                    <td>
+                        <a asp-action="Details" asp-controller="Technician" asp-route-id="@technician.Name" asp-route-slug="@technician.Slug">@technician.Name</a>
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-controller="Technician" asp-route-id="@technician.Name" asp-route-slug="@technician.Slug">@technician.Email</a>
+                    </td>
+                    <td>@technician.Phone</td>
+                    <td><asp:button runat="server" id="btnEdit" Text="Edit" OnClick="btnEdit_Click" /></td>
+                    <td><asp:button runat="server" id="btnDelete" Text="Delete" OnClick="btnDelete_Click" /></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <asp:Button runat="server" id="btnAdd" Text="Add Technician" OnClick="btnAdd_Click" />
+</body>

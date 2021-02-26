@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Incident>
+@{
+    ViewBag.Title = "Edit Incident";
+}
+
+<body>
+    <h1>Incident Details</h1>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <a asp-action="Details" asp-controller="Incident" asp-route-id="title" asp-route-slug="Slug">Title</a>
+                </td>
+                <td>
+                    <a asp-action="Details" asp-controller="Incident" asp-route-id="title" asp-route-slug="Slug">Customer</a>
+                </td>
+                <td>
+                    <a asp-action="Details" asp-controller="Incident" asp-route-id="title" asp-route-slug="Slug">Product</a>
+                </td>
+                <td>Date Opened</td>
+            </tr>
+        </tbody>
+    </table>
+</body>

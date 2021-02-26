@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Incident>
+@{
+    ViewBag.Title = "Incident Manager";
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+// For the Incident Manager Page
+<body>
+    <h1>Incident Manager</h1>
+    <table>
+        <thread>
+            <tr>Title</tr>
+            <tr>Customer</tr>
+            <tr>Product</tr>
+            <tr>Date Opened</tr>
+            <tr></tr>
+            <tr></tr>
+        </thread>
+        <tbody>
+            @foreach (Incident incident in Model)
+            {
+                <tr>
+                    <td>
+                        <a asp-action="Details" asp-controller="Incident" asp-route-id="@incident.Title" asp-route-slug="@incident.Slug">@incident.Title</a>
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-controller="Incident" asp-route-id="@incident.Customer" asp-route-slug="@incident.Slug">@incident.Customer</a>
+                    </td>
+                    <td>@incident.ProductId</td>
+                    <td>@incident.DateOpened</td>
+                    <td><asp:button runat="server" id="btnEdit" Text="Edit" OnClick="btnEdit_Click" /></td>
+                    <td><asp:button runat="server" id="btnDelete" Text="Delete" OnClick="btnDelete_Click" /></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <asp:Button runat="server" id="btnAdd" Text="Add Incident" OnClick="btnAdd_Click" />
+</body>

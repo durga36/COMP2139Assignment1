@@ -25,7 +25,7 @@ namespace ASPAssignment1.Models
             modelBuilder.Entity<Product>().HasData(
                 new Product
                 {
-                    ProductId = 1,
+                    ProductId = 1001,
                     Code = "TRNY10",
                     Name = "Tournament Master 1.0",
                     Price = "$4.99",
@@ -35,7 +35,7 @@ namespace ASPAssignment1.Models
 
                 new Product
                 {
-                    ProductId = 2,
+                    ProductId = 1002,
                     Code = "LEAG10",
                     Name = "League Scheduler 1.0",
                     Price = "$4.99",
@@ -45,7 +45,7 @@ namespace ASPAssignment1.Models
 
                 new Product
                 {
-                    ProductId = 3,
+                    ProductId = 1003,
                     Code = "LEAGD10",
                     Name = "League Scheduler Deluxe 1.0",
                     Price = "$7.99",
@@ -55,7 +55,7 @@ namespace ASPAssignment1.Models
 
                 new Product
                 {
-                    ProductId = 4,
+                    ProductId = 1004,
                     Code = "DRAFT10",
                     Name = "Draft Manager 1.0",
                     Price = "$4.99",
@@ -65,7 +65,7 @@ namespace ASPAssignment1.Models
 
                 new Product
                 {
-                    ProductId = 5,
+                    ProductId = 1005,
                     Code = "TEAM10",
                     Name = "Team Manager 1.0",
                     Price = "$4.99",
@@ -75,7 +75,7 @@ namespace ASPAssignment1.Models
 
                 new Product
                 {
-                    ProductId = 6,
+                    ProductId = 1006,
                     Code = "TRNY20",
                     Name = "Tournament Master 2.0",
                     Price = "$5.99",
@@ -85,7 +85,7 @@ namespace ASPAssignment1.Models
 
                 new Product
                 {
-                    ProductId = 7,
+                    ProductId = 1007,
                     Code = "DRAFT20",
                     Name = "Draft Manager 2.0",
                     Price = "$5.99",

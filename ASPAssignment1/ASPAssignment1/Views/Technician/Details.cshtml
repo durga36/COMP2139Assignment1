@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Technician>
+@{
+    ViewBag.Title = "Edit Technician";
+}
+
+<body>
+    <h1>Technician Details</h1>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <a asp-action="Details" asp-controller="Technician" asp-route-id="name" asp-route-slug="Slug">Name</a>
+                </td>
+                <td>
+                    <a asp-action="Details" asp-controller="Technician" asp-route-id="name" asp-route-slug="Slug">Email</a>
+                </td>
+                <td>Phone</td>
+            </tr>
+        </tbody>
+    </table>
+</body>

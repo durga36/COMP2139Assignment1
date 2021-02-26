@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Customer>
+@{
+    ViewBag.Title = "Add Customer";
+}
+
+<body>
+    <h1>Add Customer</h1>
+    <form>
+        <label for="firstName">First Name</label><br />
+        <input type="text" id="firstName" name="firstName" value="firstName" /><br />
+
+        <label for="lastName">Last Name</label><br />
+        <input type="text" id="lastName" name="lastName" value="lastName" /><br />
+
+        <label for="address">Address</label><br />
+        <input type="text" id="address" name="address" value="address" /><br />
+
+        <label for="city">City</label><br />
+        <input type="text" id="city" name="city" value="city" /><br />
+
+        <label for="state">State</label><br />
+        <input type="text" id="state" name="state" value="state" /><br />
+
+        <label for="postCode">Postal Code</label><br />
+        <input type="text" id="postCode" name="postCode" value="postCode" /><br />
+
+        <label for="country">Country</label><br />
+        <input type="text" id="country" name="country" value="country" /><br />
+
+        <label for="email">Email</label><br />
+        <input type="text" id="email" name="email" value="email" /><br />
+
+        <label for="phone">Phone</label><br />
+        <input type="text" id="phone" name="phone" value="phone" /><br />
+
+        <input type="submit" value="Save" />
+        <input type="submit" value="Cancel" />
+    </form>
+</body>

@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Product>
+@{
+    ViewBag.Title = "Add Incident";
+}
+
+<body>
+    <h1>Add Incident</h1>
+    <form>
+        <label for="title">Title</label><br />
+        <input type="text" id="title" name="title" value="title" /><br />
+
+        <label for="customerName">Customer</label><br />
+        <input type="text" id="customerName" name="customerName" value="customerName" /><br />
+
+        <label for="productName">Product</label><br />
+        <input type="text" id="productName" name="productName" value="productName" /><br />
+
+        <label for="dateOpened">Date Opened</label><br />
+        <input type="date" id="dateOpened" name="dateOpened" value="dateOpened" /><br />
+
+        <input type="submit" value="Save" />
+        <input type="submit" value="Cancel" />
+    </form>
+</body>
