@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Registration>
+@{
+    ViewBag.Title = "Registrations";
+}
+
+<body>
+    var cSelect = document.getElementById("CustName").value;
+    <h1>Customer:</h1>
+    <h1>Registrations</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <td>Product</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>cSelect.Name</td>
+                <td><a asp-controller="customer" asp-action="delete" id=2>Delete</a></td>
+            </tr>
+            <tr>
+                <td>cSelect.Name</td>
+                <td><a asp-controller="customer" asp-action="delete" id=2>Delete</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <h2>Product</h2>
+    <select id="ProductName" name="pName">
+        <option value="">Select a product...</option>
+        @foreach (Registration registration in Model)
+        {
+            <option value="@registration">@registration.ProductId</option>
+        }
+    </select>
+    <a asp-controller="customer" asp-action="registrations" asp-route-id=1002>Register</a>
+</body>

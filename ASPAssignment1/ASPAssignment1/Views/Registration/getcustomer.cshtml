@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Customer>
+@{
+    ViewBag.Title = "Registration";
+}
+
+<body>
+    <h1>Get Customer</h1>
+    <select id="CustName" name="tName">
+        <option value="">Select a customer...</option>
+
+        @foreach (Customer customer in Model)
+        {
+            <option value="@customer">@customer.firstName @customer.lastName</option>
+        }
+    </select>
+    <a asp-controller="registration" asp-action="registration" asp-route-id=1002>Select</a>
+</body>

@@ -5,35 +5,85 @@
 
 <body>
     <h1>Add Customer</h1>
-    <form>
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <form asp-action="Add" method="post" class="form-inline">
         <label for="firstName">First Name</label><br />
-        <input type="text" id="firstName" name="firstName" value="firstName" /><br />
+        <input type="text" class="form-control input-validation-error"
+               data-val="true"
+               data-val-regex="Name may not contain special characters."
+               data-val-regex-pattern="^[a-zA-Z0-9 ]&#x2B;$"
+               data-val-required="Please enter a first name."
+               id="firstName" name="firstName" value="" /><br />
 
         <label for="lastName">Last Name</label><br />
-        <input type="text" id="lastName" name="lastName" value="lastName" /><br />
+        <input type="text" class="form-control input-validation-error"
+               data-val="true"
+               data-val-regex="Name may not contain special characters."
+               data-val-regex-pattern="^[a-zA-Z0-9 ]&#x2B;$"
+               data-val-required="Please enter a last name."
+               id="lastName" name="lastName" value="" /><br />
 
         <label for="address">Address</label><br />
-        <input type="text" id="address" name="address" value="address" /><br />
+        <input type="text" class="form-control input-validation-error"
+               data-val="true"
+               data-val-regex="Name may not contain special characters."
+               data-val-regex-pattern="^[a-zA-Z0-9# ]&#x2B;$"
+               data-val-required="Please enter an address."
+               id="address" name="address" value="" /><br />
 
         <label for="city">City</label><br />
-        <input type="text" id="city" name="city" value="city" /><br />
+        <input type="text" class="form-control input-validation-error"
+               data-val="true"
+               data-val-regex="Name may not contain special characters."
+               data-val-regex-pattern="^[a-zA-Z0-9 ]&#x2B;$"
+               data-val-required="Please enter city."
+               id="city" name="city" value="" /><br />
 
         <label for="state">State</label><br />
-        <input type="text" id="state" name="state" value="state" /><br />
+        <input type="text" class="form-control input-validation-error"
+               data-val="true"
+               data-val-regex="Name may not contain special characters."
+               data-val-regex-pattern="^[a-zA-Z0-9 ]&#x2B;$"
+               data-val-required="Please enter state."
+               id="state" name="state" value="" /><br />
 
         <label for="postCode">Postal Code</label><br />
-        <input type="text" id="postCode" name="postCode" value="postCode" /><br />
+        <input type="text" class="form-control input-validation-error"
+               data-val="true"
+               data-val-regex="Name may not contain special characters."
+               data-val-regex-pattern="^[a-zA-Z0-9 ]&#x2B;$"
+               data-val-required="Please enter postal code."
+               id="postCode" name="postCode" value="" /><br />
 
         <label for="country">Country</label><br />
-        <input type="text" id="country" name="country" value="country" /><br />
+        <select id="country" name="country">
+            <option value="">Select a country...</option>
+            <option value="usa">USA</option>
+            <option value="canada">Canada</option>
+            <option value="australia">Australia</option>
+        </select><br />
 
-        <label for="email">Email</label><br />
-        <input type="text" id="email" name="email" value="email" /><br />
+            <label for="email">Email</label>
+            <br />
+            <input type="text" class="form-control input-validation-error"
+                   data-val="true"
+                   data-val-regex="Name may not contain special characters."
+                   data-val-regex-pattern="^[a-z0-9._%+-]+[a-z0-9.-]+\.[a-z]{2,4}$"
+                   data-val-required="Please enter an email."
+                   id="email" name="email" value="" />
+            <br />
 
-        <label for="phone">Phone</label><br />
-        <input type="text" id="phone" name="phone" value="phone" /><br />
+            <label for="phone">Phone</label>
+            <br />
+            <input type="tel" class="form-control input-validation-error"
+                   data-val="true"
+                   data-val-regex="Name may not contain special characters."
+                   data-val-regex-pattern="^([0-9]{3})[0-9]{3}-[0-9]{4}$"
+                   data-val-required="Please enter phone number."
+                   id="phone" name="phone" value="" />
+            <br />
 
-        <input type="submit" value="Save" />
-        <input type="submit" value="Cancel" />
+            <input type="submit" value="Save" />
+            <input type="submit" value="Cancel" />
     </form>
 </body>

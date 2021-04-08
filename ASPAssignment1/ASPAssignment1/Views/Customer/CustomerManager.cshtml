@@ -7,30 +7,39 @@
 // For the Customer Manager Page
 <body>
     <h1>Customer Manager</h1>
+
+    label for="customer">Customer:</label>
+    <select name="customer" id="customer">
+        @foreach (Customer customer in Model)
+        {
+            <option value="@customer">Select a customer...</option>
+        }
+    </select>
+
     <table>
         <thread>
             <tr>Name</tr>
             <tr>Email</tr>
             <tr>City</tr>
-            <tr></tr>
+            <tr>Genre</tr>
             <tr></tr>
         </thread>
         <tbody>
             @foreach (Customer customer in Model)
             {
-            <tr>
-                <td>
-                    <a asp-action="Details" asp-controller="Customer" asp-route-id="@customer.Name" asp-route-slug="@customer.Slug">@customer.Name</a>
-                </td>
-                <td>
-                    <a asp-action="Details" asp-controller="Customer" asp-route-id="@customer.Email" asp-route-slug="@customer.Slug">@customer.Email</a>
-                </td>
-                <td>
-                    <a asp-action="Details" asp-controller="Customer" asp-route-id="@customer.City" asp-route-slug="@customer.Slug">@customer.City</a>
-                </td>
-                <td><asp:button runat="server" id="btnEdit" Text="Edit" OnClick="btnEdit_Click" /></td>
-                <td><asp:button runat="server" id="btnDelete" Text="Delete" OnClick="btnDelete_Click" /></td>
-            </tr>
+                <tr>
+                    <td>
+                        <a asp-action="Details" asp-controller="Customer" asp-route-id="@customer.Name" asp-route-slug="@customer.Slug">@customer.Name</a>
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-controller="Customer" asp-route-id="@customer.Email" asp-route-slug="@customer.Slug">@customer.Email</a>
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-controller="Customer" asp-route-id="@customer.City" asp-route-slug="@customer.Slug">@customer.City</a>
+                    </td>
+                    <td><asp:button runat="server" id="btnEdit" Text="Edit" OnClick="btnEdit_Click" /></td>
+                    <td><asp:button runat="server" id="btnDelete" Text="Delete" OnClick="btnDelete_Click" /></td>
+                </tr>
             }
         </tbody>
     </table>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace ASPAssignment1.Models
@@ -14,11 +15,16 @@ namespace ASPAssignment1.Models
 
         public String Phone { get; set; }
 
-        [Range(1, 10000, ErrorMessage = "Please select a category.")]
-        public int CategoryId { get; set; }
-
-        public Category Category { get; set; }
+        [Required(ErrorMessage = "Please enter a genre.")]
+        public string GenreId { get; set; }
+        public Genre Genre { get; set; }
 
         public string Slug => Name?.Replace(" ", "-").ToLower();
+
+        public object Conferences { get; internal set; }
+        public object Conference { get; internal set; }
+        public object Division { get; internal set; }
+        public List<Technician> Technicians { get; internal set; }
+        public object Divisions { get; internal set; }
     }
 }

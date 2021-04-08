@@ -14,41 +14,62 @@ namespace ASPAssignment1.Controllers
             context = ptx;
         }
 
+        [Route("[controller]s/{cat?}")]
+        public ViewResult List(string id = "All")
+        {
+            ViewBag.Genre = id;
+            return View();
+        }
+
+        public RedirectToActionResult Index() => RedirectToAction("List");
+
         [HttpGet]
         public IActionResult Add()
         {
             ViewBag.Action = "Add";
-            ViewBag.Categories = context.Categories.OrderBy(p => p.CategoryName).ToList();
+            ViewBag.Genres = context.Genres.OrderBy(p => p.Name).ToList();
             return View("Edit", new Product());
         }
 
-        public IActionResult Details(int id)
+        public IActionResult Details(string id)
         {
             var product = context.Products
-                .Include(p => p.Category)
-                .FirstOrDefault(p => p.CategoryId == id);
+                .Include(p => p.Genre)
+                .FirstOrDefault(p => p.GenreId == id);
             return View(product);
         }
 
         [HttpGet]
-        public IActionResult Edit(int id)
+        public IActionResult Edit(string id)
         {
             ViewBag.Action = "Edit";
-            ViewBag.Categories = context.Categories.OrderBy(p => p.CategoryName).ToList();
+            ViewBag.Categories = context.Genres.OrderBy(p => p.Name).ToList();
             
             var product = context.Products
-                .Include(p => p.Category)
-                .FirstOrDefault(p => p.ProductId == id);
-            return View(product);
+                .Include(p => p.Genre)
+                .FirstOrDefault(p => p.GenreId == id);
+            return View(product); 
         }
 
         [HttpGet]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(string id)
         {
             var product = context.Products
-                .Include(p => p.Category)
-                .FirstOrDefault(p => p.ProductId == id);
-            return View(product);
+                .Include(p => p.Genre)
+                .FirstOrDefault(p => p.GenreId == id);
+            return View(product); 
+        }
+
+        [HttpPost]
+        public IActionResult Filter(string[] filter)
+        {
+            foreach (var data in filter)
+            {
+                var incident = context.Products
+                .Include(i => i.Genre)
+                .FirstOrDefault(i => i.GenreId == data);
+            }
+            return View(filter);
         }
 
         [HttpPost]
@@ -61,18 +82,20 @@ namespace ASPAssignment1.Controllers
                 {
                     context.Products.Add(product);
                     context.SaveChanges();
+                    TempData["message"] = $"{product.Name} was added.";
                 }
                 else
                 {
                     context.Products.Update(product);
                     context.SaveChanges();
+                    TempData["message"] = $"{product.Name} was edited.";
                 }
                 return RedirectToAction("Index", "Home");
             }
             else
             {
                 ViewBag.Action = action;
-                ViewBag.Categories = context.Categories.OrderBy(p => p.CategoryName).ToList();
+                ViewBag.Categories = context.Genres.OrderBy(p => p.Name).ToList();
                 return View(product);
             }
         }
@@ -82,6 +105,7 @@ namespace ASPAssignment1.Controllers
         {
             context.Products.Remove(product);
             context.SaveChanges();
+            TempData["message"] = $"{product.Name} was deleted.";
             return RedirectToAction("Index", "Home");
         }
     }

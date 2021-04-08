@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Technician>
+@{
+    ViewBag.Title = "Technician List";
+}
+
+<h1>Technician List</h1>
+
+<div class="list-group">
+    <p>Category: @ViewBag.technician.Name</p>
+
+    <a asp-action="Details">Technician Details</a>
+    <a asp-controller="Home" asp-action="Index">Home</a>
+</div>

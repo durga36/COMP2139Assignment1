@@ -7,13 +7,22 @@
 // For the Product Manager Page
 <body>
     <h1>Product Manager</h1>
+
+    <label for="product">Product:</label>
+    <select name="product" id="product">
+        @foreach (Product product in Model)
+        {
+            <option value="@product">Select a product...</option>
+        }
+    </select>
+
     <table>
         <thread>
             <tr>Code</tr>
             <tr>Name</tr>
             <tr>Price</tr>
             <tr>Release Date</tr>
-            <tr></tr>
+            <tr>Genre</tr>
             <tr></tr>
         </thread>
         <tbody>
@@ -28,6 +37,7 @@
                     </td>
                     <td>@product.Price</td>
                     <td>@product.ReleaseDate</td>
+                    <td>@product.Genre.Name</td>
                     <td><asp:button runat="server" id="btnEdit" Text="Edit" OnClick="btnEdit_Click" /></td>
                     <td><asp:button runat="server" id="btnDelete" Text="Delete" OnClick="btnDelete_Click" /></td>
                 </tr>

@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Technician>
+@{
+    ViewBag.Title = "List Incidents for Technician";
+}
+
+<body>
+    var tSelect = document.getElementById("TechName").value;
+    <h1>Technician:</h1>
+    <h1>Assigned/Open Incidents</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <td>Title</td>
+                <td>Customer</td>
+                <td>Product</td>
+                <td>Date Opened</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>tSelect.Title</td>
+                <td>tSelect.Customer</td>
+                <td>tSelect.Product</td>
+                <td>tSelect.DateOpened</td>
+                <td><a asp-controller="techincident" asp-action="edit" id=2>Edit</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <a asp-controller="techincident" asp-action="get">Switch Technician</a>
+</body>

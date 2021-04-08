@@ -7,12 +7,23 @@
 // For the Technician Manager Page
 <body>
     <h1>Technician Manager</h1>
+
+    label for="technician">Technician:</label>
+    <select name="technician" id="technician">
+        <option value="">Select a technician...</option>
+
+        @foreach (Technician technician in Model)
+        {
+            <option value="@technician">@technician.Name</option>
+        }
+    </select>
+
     <table>
         <thread>
             <tr>Name</tr>
             <tr>Email</tr>
             <tr>Phone</tr>
-            <tr></tr>
+            <tr>Genre</tr>
             <tr></tr>
         </thread>
         <tbody>
@@ -26,6 +37,7 @@
                         <a asp-action="Details" asp-controller="Technician" asp-route-id="@technician.Name" asp-route-slug="@technician.Slug">@technician.Email</a>
                     </td>
                     <td>@technician.Phone</td>
+                    <td>@technician.Genre.Name</td>
                     <td><asp:button runat="server" id="btnEdit" Text="Edit" OnClick="btnEdit_Click" /></td>
                     <td><asp:button runat="server" id="btnDelete" Text="Delete" OnClick="btnDelete_Click" /></td>
                 </tr>

@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Technician>
+@{
+    ViewBag.Title = "Get Technician";
+}
+
+<body>
+    <h1>Technician</h1>
+    <select id="TechName" name="tName">
+        <option value="">Select a technician...</option>
+
+        @foreach (Technician technician in Model)
+        {
+            <option value="@technician">@technician.Name</option>
+        }
+    </select>
+    <a asp-controller="techincident" asp-action="List" asp-route-id=14>Select</a>
+</body>

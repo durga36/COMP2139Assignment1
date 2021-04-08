@@ -14,19 +14,26 @@ namespace ASPAssignment1.Controllers
             context = itx;
         }
 
+        [Route("[controller]s/{cat?}")]
+        public IActionResult List (string id = "All")
+        {
+            ViewBag.Genre = id;
+            return View();
+        }
+
         [HttpGet]
         public IActionResult Add()
         {
             ViewBag.Action = "Add";
-            ViewBag.Categories = context.Categories.OrderBy(i => i.CategoryName).ToList();
+            ViewBag.Genres = context.Genres.OrderBy(i => i.Name).ToList();
             return View("Edit", new Incident());
         }
 
-        public IActionResult Details(int id)
+        public IActionResult Details(string id)
         {
             var incident = context.Incidents
-                .Include(i => i.Category)
-                .FirstOrDefault(i => i.CategoryId == id);
+                .Include(i => i.Genre)
+                .FirstOrDefault(i => i.GenreId == id);
             return View(incident);
         }
 
@@ -34,21 +41,33 @@ namespace ASPAssignment1.Controllers
         public IActionResult Edit(int id)
         {
             ViewBag.Action = "Edit";
-            ViewBag.Categories = context.Categories.OrderBy(i => i.CategoryName).ToList();
+            ViewBag.Genres = context.Genres.OrderBy(i => i.Name).ToList();
 
             var incident = context.Incidents
-                .Include(i => i.Category)
-                .FirstOrDefault(i => i.ProductId == id);
+                .Include(i => i.Genre)
+                .FirstOrDefault(i => i.IncidentId == id);
             return View(incident);
         }
 
         [HttpGet]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(string id)
         {
             var incident = context.Incidents
-                .Include(i => i.Category)
-                .FirstOrDefault(i => i.IncidentId == id);
+                .Include(i => i.Genre)
+                .FirstOrDefault(i => i.GenreId == id);
             return View(incident);
+        }
+
+        [HttpPost]
+        public IActionResult Filter(string[] filter)
+        {
+            foreach (var data in filter)
+            {
+                var incident = context.Incidents
+                .Include(i => i.Genre)
+                .FirstOrDefault(i => i.GenreId == data);
+            }
+            return View(filter);
         }
 
         [HttpPost]
@@ -72,7 +91,7 @@ namespace ASPAssignment1.Controllers
             else
             {
                 ViewBag.Action = action;
-                ViewBag.Categories = context.Categories.OrderBy(i => i.CategoryName).ToList();
+                ViewBag.Genres = context.Genres.OrderBy(i => i.Name).ToList();
                 return View(incident);
             }
         }

@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Incident>
+@{
+    ViewBag.Title = "Incident List";
+}
+
+<h1>Product List</h1>
+
+<div class="list-group">
+    var incidentList = new List<>(){
+        foreach (Incident incident in incidents)
+        {
+            var incident = context.Incident
+            .Include(i => i.Genre)
+            .FirstOrDefault(i => i.GenreId == incident.Name);
+        }
+    };
+
+    <p>Category: @ViewBag.incidentList</p>
+
+    <a asp-action="Details">Incident Details</a>
+    <a asp-controller="Home" asp-action="Index">Home</a>
+</div>

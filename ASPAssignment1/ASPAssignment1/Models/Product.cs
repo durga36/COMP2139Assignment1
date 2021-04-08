@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace ASPAssignment1.Models
@@ -17,10 +18,11 @@ namespace ASPAssignment1.Models
 
         public String ReleaseDate { get; set; }
 
-        [Range(1, 10000, ErrorMessage = "Please select a category.")]
-        public int CategoryId { get; set; }
+        [Required(ErrorMessage = "Please enter a genre.")]
+        public string GenreId { get; set; }
+        public Genre Genre { get; set; }
 
-        public Category Category { get; set; }
+        public virtual ICollection<Customer> Customers { get; set; }
 
         public string Slug => Name?.Replace(" ", "-").ToLower();
     }

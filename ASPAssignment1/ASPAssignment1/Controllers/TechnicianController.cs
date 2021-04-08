@@ -14,31 +14,38 @@ namespace ASPAssignment1.Controllers
             context = ttx;
         }
 
+        [Route("[controller]s/{cat?}")]
+        public IActionResult List(string id = "All")
+        {
+            ViewBag.Genre = id;
+            return View();
+        }
+
         [HttpGet]
         public IActionResult Add()
         {
             ViewBag.Action = "Add";
-            ViewBag.Categories = context.Categories.OrderBy(t => t.CategoryName).ToList();
+            ViewBag.Genres = context.Genres.OrderBy(t => t.Name).ToList();
             return View("Edit", new Technician());
         }
 
-        public IActionResult Details(int id)
+        public IActionResult Details(string id)
         {
             var technician = context.Technicians
-                .Include(t => t.Category)
-                .FirstOrDefault(t => t.CategoryId == id);
+                .Include(t => t.Genre)
+                .FirstOrDefault(t => t.GenreId == id);
             return View(technician);
         }
 
         [HttpGet]
-        public IActionResult Edit(int id)
+        public IActionResult Edit(string id)
         {
             ViewBag.Action = "Edit";
-            ViewBag.Categories = context.Categories.OrderBy(t => t.CategoryName).ToList();
+            ViewBag.Categories = context.Genres.OrderBy(t => t.Name).ToList();
 
             var technician = context.Technicians
-                .Include(t => t.Category)
-                .FirstOrDefault(t => t.TechnicianId == id);
+                .Include(t => t.Genre)
+                .FirstOrDefault(t => t.GenreId == id);
             return View(technician);
         }
 
@@ -46,9 +53,21 @@ namespace ASPAssignment1.Controllers
         public IActionResult Delete(int id)
         {
             var technician = context.Technicians
-                .Include(t => t.Category)
+                .Include(t => t.Genre)
                 .FirstOrDefault(t => t.TechnicianId == id);
             return View(technician);
+        }
+
+        [HttpPost]
+        public IActionResult Filter(string[] filter)
+        {
+            foreach (var data in filter)
+            {
+                var incident = context.Technicians
+                .Include(i => i.Genre)
+                .FirstOrDefault(i => i.GenreId == data);
+            }
+            return View(filter);
         }
 
         [HttpPost]
@@ -72,7 +91,7 @@ namespace ASPAssignment1.Controllers
             else
             {
                 ViewBag.Action = action;
-                ViewBag.Categories = context.Categories.OrderBy(t => t.CategoryName).ToList();
+                ViewBag.Categories = context.Genres.OrderBy(t => t.Name).ToList();
                 return View(technician);
             }
         }
@@ -83,6 +102,37 @@ namespace ASPAssignment1.Controllers
             context.Technicians.Remove(technician);
             context.SaveChanges();
             return RedirectToAction("Index", "Home");
+        }
+
+        public IActionResult Index(string activeConf = "all", string activeDiv = "all")
+        {
+            var session = new TechnicianSession(HttpContext.Session);
+            session.SetActiveConf(activeConf);
+            session.SetActiveDiv(activeDiv);
+
+            var model = new Technician
+            {
+                Name = activeConf,
+                Email = activeDiv,
+                Conferences = context.Conference,
+                Divisions = context.Divisions
+            };
+
+            IQueryable<Technician> query = context.Technicians;
+            if (activeConf != "all")
+                query = query.Where(
+#pragma warning disable CS0252 // Possible unintended reference comparison; left hand side needs cast
+                    t => t.Conference == activeConf.ToLower());
+#pragma warning restore CS0252 // Possible unintended reference comparison; left hand side needs cast
+            if (activeDiv != "all")
+                query = query.Where(
+#pragma warning disable CS0252 // Possible unintended reference comparison; left hand side needs cast
+                    t => t.Division == activeDiv.ToLower());
+#pragma warning restore CS0252 // Possible unintended reference comparison; left hand side needs cast
+            model.Technicians = query.ToList();
+
+            return View(model);
+
         }
     }
 }

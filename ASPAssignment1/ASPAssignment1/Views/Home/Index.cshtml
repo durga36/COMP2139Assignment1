@@ -9,14 +9,15 @@
     <p>Sports management software for the sports enthusiast</p>
     <div>
         <h2>Admin</h2>
-        <button style="padding:15px; width:50%; text-align:left;">Manage Products</button><br />
-        <button style="padding:15px; width:50%; text-align:left;">Manage Technicians</button><br />
-        <button style="padding:15px; width:50%; text-align:left;">Manage Customers</button><br />
-        <button style="padding:15px; width:50%; text-align:left;">Manage Incidents</button><br />
-        <button style="padding:15px; width:50%; text-align:left;">Manage Registrations</button>
+        <a asp-controller="Product" asp-action="List">Manage Products</a><br />
+        <a asp-controller="Technician" asp-action="List">Manage Technicians</a><br />
+        <a asp-controller="Customer" asp-action="List">Manage Customers</a><br />
+        <a asp-controller="Incident" asp-action="List">Manage Incidents</a><br />
+        <a asp-controller="" asp-action="">Manage Registrations</a>
+        <a asp-action="About">About</a>
     </div>
     <div>
         <h2>Technicians</h2>
-        <button style="padding:15px; width:50%; text-align:left;">Update Incident</button>
+        <a asp-controller="" asp-action="">Update Incident</a>
     </div>   
 </div>

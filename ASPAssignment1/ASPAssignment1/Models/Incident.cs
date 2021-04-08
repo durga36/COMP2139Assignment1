@@ -15,11 +15,9 @@ namespace ASPAssignment1.Models
 
         public String DateOpened { get; set; }
 
-        [Range(1, 10000, ErrorMessage = "Please select a category.")]
-        public int CategoryId { get; set; }
-
-        public Category Category { get; set; }
-
+        [Required(ErrorMessage = "Please enter a genre.")]
+        public string GenreId { get; set; }
+        public Genre Genre { get; set; }
         public string Slug => Title?.Replace(" ", "-").ToLower();
     }
 }

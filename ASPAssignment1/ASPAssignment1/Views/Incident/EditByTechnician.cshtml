@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Technician>
+@{
+    ViewBag.Title = "Edit Incident";
+}
+
+<body>
+    var tSelect = document.getElementById("TechName").value;
+    <h1>Edit Incident</h1>
+    <dl>
+
+        <dt> Technician: </dt>
+        <dd> @Html.DisplayFor(Technician.Name) </dd>
+        <dt> Customer: </dt>
+        <dd> @Html.DisplayFor(Customer.Name) </dd>
+        <dt> Product: </dt>
+        <dd> @Html.DisplayFor(Product.Name) </dd>
+        <dt> Title: </dt>
+        <dd> @Html.DisplayFor(Incident.Title) </dd>
+        <dt> Date Opened: </dt>
+        <dd> @Html.DisplayFor(Incident.DateOpened) </dd>
+    </dl>
+    <label for="description">Description: </label>
+    <textarea id="description" name="description" rows="4" columns="50"></textarea>
+    <label for="title">Date Closed</label><br />
+    <input type="text" id="title" name="title" value="title" /><br />
+    <a asp-controller="techincident" asp-action="List" asp-route-id=14>Save</a>
+    <a asp-controller="techincident" asp-action="List" asp-route-id=14>Cancel</a>
+</body>

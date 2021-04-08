@@ -12,10 +12,10 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SportsPro</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                <a class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
-                </button>
+                </a>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
@@ -25,36 +25,48 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="ProductManager">Products</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Technicians" asp-action="Privacy">Technicians</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Technician" asp-action="TechnicianManager">Technicians</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Customers" asp-action="Privacy">Customers</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="CustomerManager">Customers</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Incidents" asp-action="Privacy">Incidents</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Incident" asp-action="IncidentManager">Incidents</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Registrations" asp-action="Privacy">Registrations</a>
+                            <a class="nav-link text-dark" asp-controller="registration" asp-action="getcustomer">Registrations</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="About" asp-action="Privacy">About</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">About</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
+    @if (TempData.Keys.Contains("message"))
+    {
+        <h4 class="bg-info text-center text-white p-2">
+            @TempData["message"]
+        </h4>
+    }
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
-
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2021 - ASPAssignment1 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+    <script>
+        jQuery(function ($) {
+            @*mask the phone number in the exact desired format*@
+            $("#phone").mask("(999) 999-9999? x99999");
+            phone.focus();
+        });
+    </script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

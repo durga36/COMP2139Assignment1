@@ -10,17 +10,20 @@ namespace ASPAssignment1.Models
 
         public DbSet<Technician> Technicians { get; set; }
 
-        public DbSet<Category> Categories { get; set; }
+        public DbSet<Genre> Genres { get; set; }
+        public object Conferences { get; internal set; }
+        public object Divisions { get; internal set; }
+        public object Conference { get; internal set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Category>().HasData(
-                new Category { CategoryId = 1, CategoryName = "Tournament Master" },
-                new Category { CategoryId = 2, CategoryName = "League Scheduler" },
-                new Category { CategoryId = 3, CategoryName = "League Scheduler Deluxe" },
-                new Category { CategoryId = 4, CategoryName = "Draft Manager" },
-                new Category { CategoryId = 5, CategoryName = "Team Manager" }
-            );
+            modelBuilder.Entity<Genre>().HasData(
+               new Genre { GenreId = "ToM", Name = "Tournament Master" },
+               new Genre { GenreId = "LS", Name = "League Scheduler" },
+               new Genre { GenreId = "LSD", Name = "League Scheduler Deluxe" },
+               new Genre { GenreId = "DM", Name = "Draft Manager" },
+               new Genre { GenreId = "TeM", Name = "Team Manager" }
+           );
 
             modelBuilder.Entity<Technician>().HasData(
                 new Technician

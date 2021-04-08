@@ -5,12 +5,12 @@
 
 <body>
     <h1>Edit Customer</h1>
-    <form>
+    <form asp-action="Edit" method="post">
         <label for="firstName">First Name</label><br />
         <input type="text" id="firstName" name="firstName" value="firstName" /><br />
 
         <label for="lastName">Last Name</label><br />
-        <input type="text" id="lastName" name="lastName" value="lastName" /><br />
+        <input type="text" id="lastName" name="lastName" value="lastName" required /><br />
 
         <label for="address">Address</label><br />
         <input type="text" id="address" name="address" value="address" /><br />
@@ -19,7 +19,7 @@
         <input type="text" id="city" name="city" value="city" /><br />
 
         <label for="state">State</label><br />
-        <input type="text" id="state" name="state" value="state" /><br />
+        <input type="text" id="state" name="state" value="state" required /><br />
 
         <label for="postCode">Postal Code</label><br />
         <input type="text" id="postCode" name="postCode" value="postCode" /><br />

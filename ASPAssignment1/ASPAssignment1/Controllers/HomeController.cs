@@ -16,11 +16,18 @@ namespace ASPAssignment1.Controllers
             context = ptx;
         }
 
+        [Route("[controller]s/{cat?}")]
+        public IActionResult About()
+        {
+            return View();
+        }
+
         public IActionResult Index()
         {
             var products = context.Products
-                .Include(p => p.Category)
-                .OrderBy(p => p.Name.ToList());
+                .Include(p => p.Genre)
+                .OrderBy(p => p.Name)
+                .ToList();
             return View(products);
         }
 

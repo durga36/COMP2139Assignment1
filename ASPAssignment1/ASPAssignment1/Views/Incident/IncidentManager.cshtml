@@ -7,32 +7,115 @@
 // For the Incident Manager Page
 <body>
     <h1>Incident Manager</h1>
-    <table>
-        <thread>
-            <tr>Title</tr>
-            <tr>Customer</tr>
-            <tr>Product</tr>
-            <tr>Date Opened</tr>
-            <tr></tr>
-            <tr></tr>
-        </thread>
-        <tbody>
+    <div>
+        <button id="all">All incidents</button>
+        <button id="unassigned">Unassigned incidents</button>
+        <button id="open">Open incidents</button>
+    </div>
+    <div id="all">
+        label for="incident">Incident:</label>
+        <select name="incident" id="incident">
             @foreach (Incident incident in Model)
             {
-                <tr>
-                    <td>
-                        <a asp-action="Details" asp-controller="Incident" asp-route-id="@incident.Title" asp-route-slug="@incident.Slug">@incident.Title</a>
-                    </td>
-                    <td>
-                        <a asp-action="Details" asp-controller="Incident" asp-route-id="@incident.Customer" asp-route-slug="@incident.Slug">@incident.Customer</a>
-                    </td>
-                    <td>@incident.ProductId</td>
-                    <td>@incident.DateOpened</td>
-                    <td><asp:button runat="server" id="btnEdit" Text="Edit" OnClick="btnEdit_Click" /></td>
-                    <td><asp:button runat="server" id="btnDelete" Text="Delete" OnClick="btnDelete_Click" /></td>
-                </tr>
+                <option value="@incident">Select a incident...</option>
             }
-        </tbody>
-    </table>
-    <asp:Button runat="server" id="btnAdd" Text="Add Incident" OnClick="btnAdd_Click" />
+        </select>
+
+        <table>
+            <thread>
+                <tr>Title</tr>
+                <tr>Customer</tr>
+                <tr>Product</tr>
+                <tr>Date Opened</tr>
+                <tr>Genre</tr>
+                <tr></tr>
+            </thread>
+            <tbody>
+                @foreach (Incident incident in Model)
+                {
+                    <tr>
+                        <td>
+                            <a asp-action="Details" asp-controller="Incident" asp-route-id="@incident.Title" asp-route-slug="@incident.Slug">@incident.Title</a>
+                        </td>
+                        <td>
+                            <a asp-action="Details" asp-controller="Incident" asp-route-id="@incident.Customer" asp-route-slug="@incident.Slug">@incident.Customer</a>
+                        </td>
+                        <td>@incident.ProductId</td>
+                        <td>@incident.DateOpened</td>
+                        <td>@incident.Genre.Name</td>
+                        <td><asp:button runat="server" id="btnEdit" Text="Edit" OnClick="btnEdit_Click" /></td>
+                        <td><asp:button runat="server" id="btnDelete" Text="Delete" OnClick="btnDelete_Click" /></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <asp:Button runat="server" id="btnAdd" Text="Add Incident" OnClick="btnAdd_Click" />
+    </div>
+
+    <div id="unassigned">
+        <table>
+            <thread>
+                <tr>Title</tr>
+                <tr>Customer</tr>
+                <tr>Product</tr>
+                <tr>Date Opened</tr>
+                <tr>Genre</tr>
+                <tr></tr>
+                <tr></tr>
+            </thread>
+            <tbody>
+                @foreach (Incident incident in Model)
+                {
+                    <tr>
+                        <td>
+                            <a asp-action="Details" asp-controller="Incident" asp-route-id="@incident.Title" asp-route-slug="@incident.Slug">@incident.Title</a>
+                        </td>
+                        <td>
+                            <a asp-action="Details" asp-controller="Incident" asp-route-id="@incident.Customer" asp-route-slug="@incident.Slug">@incident.Customer</a>
+                        </td>
+                        <td>@incident.ProductId</td>
+                        <td>@incident.DateOpened</td>
+                        <td>@incident.Genre.Name</td>
+                        <td><a asp-action="Delete" asp-controller="Incident">Delete</a></td>
+                        <td><a asp-action="Delete" asp-controller="Incident">Delete</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <asp:Button runat="server" id="btnAdd" Text="Add Incident" OnClick="btnAdd_Click" />
+    </div>
+
+    <div id="open">
+        <table>
+            <thread>
+                <tr>Title</tr>
+                <tr>Customer</tr>
+                <tr>Product</tr>
+                <tr>Date Opened</tr>
+                <tr>Genre</tr>
+                <tr></tr>
+                <tr></tr>
+            </thread>
+            <tbody>
+                @foreach (Incident incident in Model)
+                {
+                    <tr>
+                        <td>
+                            <a asp-action="Details" asp-controller="Incident" asp-route-id="@incident.Title" asp-route-slug="@incident.Slug">@incident.Title</a>
+                        </td>
+                        <td>
+                            <a asp-action="Details" asp-controller="Incident" asp-route-id="@incident.Customer" asp-route-slug="@incident.Slug">@incident.Customer</a>
+                        </td>
+                        <td>@incident.ProductId</td>
+                        <td>@incident.DateOpened</td>
+                        <td>@incident.Genre.Name</td>
+                        <td><a asp-action="Delete" asp-controller="Incident">Delete</a></td>
+                        <td><a asp-action="Delete" asp-controller="Incident">Delete</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <asp:Button runat="server" id="btnAdd" Text="Add Incident" OnClick="btnAdd_Click" />
+    </div>
+
 </body>
